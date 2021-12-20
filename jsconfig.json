@@ -1,0 +1,19 @@
+//vscode 기능 활용위한 파일
+//see vscode docs 'jsconfig.json'
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "~/*": [
+                "./*"
+            ],
+            "@/*": [
+                "./src/*"
+            ],
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
