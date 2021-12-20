@@ -10,6 +10,17 @@ module.exports = {
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    //.prettierrc 대신 eslintrc.js 안에 prettier 룰을 적는다: 충돌방지를 위해
+    "prettier/prettier": ['error', {
+      singleQuote: true,
+      semi: true,
+      useTabs: false,
+      tabWidth: 2,
+      trailingComma: 'all',
+      printWidth: 80,
+      bracketSpacing: true,
+      arrowParens: 'avoid',
+    },]
   },
   overrides: [
     {
