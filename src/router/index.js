@@ -9,6 +9,10 @@ Vue.use(VueRouter);
 //SPA 초기 로드 부하 방지 lazy loading 통해서 -> 위와같이 static import 안함
 const routes = [
   {
+    path: '/',
+    redirect: '/login',
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/LoginPage.vue'),
@@ -17,6 +21,10 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: () => import('@/views/SignupPage.vue'),
+  },
+  {
+    path: '*', // 위의  path 를 제외한 나머지
+    component: () => import('@/views/404.vue'),
   },
   // {
   //   path: '/about',
@@ -30,6 +38,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  //mode:history - url 상 '#' 제거 (주의점:배포시 서버엔진별 url 필터링 설정 필요함)
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
