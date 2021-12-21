@@ -13,12 +13,15 @@
       <label for="nickname">nickname: </label>
       <!-- vue.js cjk IME issue : https://en.wikipedia.org/wiki/Input_method, https://vuejs.org/v2/guide/forms.html#vmodel-ime-tip -->
       <!-- cannot bind data object directly by this way -->
-      <input
+      <!-- <input
         id="nickname"
         type="text"
         @input="nickname = $event.target.value"
         :nickname="nickname"
-      />
+      /> -->
+
+      <!-- use custom directive: https://github.com/kciter/vue-ime-model -->
+      <input id="nickname" type="text" v-ime-model="nickname" />
     </div>
     <button type="submit">login</button>
     <p v-if="logMsg">{{ logMsg }}</p>
@@ -47,11 +50,20 @@ export default {
       console.log({ data });
       this.logMsg = `${data.username}님 가입완료`;
       this.initForm();
+      console.log(await this.test());
     },
     initForm() {
       this.username = '';
       this.password = '';
       this.nickname = '';
+    },
+    async test() {
+      const nickname = await document.getElementById('nickname').value;
+      const username = await document.getElementById('username').value;
+      return {
+        nickname,
+        username,
+      };
     },
   },
 };
