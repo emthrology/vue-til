@@ -15,6 +15,7 @@ vue-til 서버로 아래 레포지토리 필요
   "[vue]": {
     "editor.defaultFormatter": "octref.vetur"
   }
+  //vetur inport file double quote issue
 }
 
 ```
