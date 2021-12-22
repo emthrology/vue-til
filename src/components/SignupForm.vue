@@ -23,7 +23,7 @@
       <!-- use custom directive: https://github.com/kciter/vue-ime-model -->
       <input id="nickname" type="text" v-ime-model="nickname" />
     </div>
-    <button type="submit">login</button>
+    <button type="submit">signup</button>
     <p v-if="logMsg">{{ logMsg }}</p>
   </form>
 </template>
@@ -50,20 +50,11 @@ export default {
       console.log({ data });
       this.logMsg = `${data.username}님 가입완료`;
       this.initForm();
-      console.log(await this.test());
     },
     initForm() {
       this.username = '';
       this.password = '';
       this.nickname = '';
-    },
-    async test() {
-      const nickname = await document.getElementById('nickname').value;
-      const username = await document.getElementById('username').value;
-      return {
-        nickname,
-        username,
-      };
     },
   },
 };
