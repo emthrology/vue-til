@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { loginUser } from '@/api/index';
 export default {
   data() {
     return {
@@ -26,8 +27,14 @@ export default {
         username: this.username,
         password: this.password,
       };
-      // const { data } = await registerUser(userData);
+      const { data } = await loginUser(userData);
       console.log({ data });
+      alert(`${data.user.username}님 로그인`);
+      this.initForm();
+    },
+    initForm() {
+      this.username = '';
+      this.password = '';
     },
   },
 };
