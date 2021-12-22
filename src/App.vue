@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="app">
     <!-- never do self closing tags in DOM template, but it's SFC -->
     <AppHeader />
-    <main>
+    <main class="app-contents">
       <router-view></router-view>
     </main>
   </div>
@@ -17,4 +17,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@import './css/reset.css';
+@import './css/common.css';
+</style>

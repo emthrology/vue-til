@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>sign up!</h1>
+    <h1 class="page-header">sign up!</h1>
     <SignupForm />
   </div>
 </template>

@@ -1,37 +1,46 @@
 <template>
-  <!-- .prevent = preventDefault -->
-  <form @submit.prevent="submitForm">
-    <div>
-      <label for="username">id: </label>
-      <input id="username" type="text" v-model="username" />
-    </div>
-    <div>
-      <label for="password">pw: </label>
-      <input id="password" type="text" v-model="password" />
-      <p v-if="isPwKeyup">비밀번호 조건: 6~16자, 특수문자 1글자 이상</p>
-    </div>
-    <div>
-      <label for="nickname">nickname: </label>
-      <!-- vue.js cjk IME issue : https://en.wikipedia.org/wiki/Input_method, https://vuejs.org/v2/guide/forms.html#vmodel-ime-tip -->
-      <!-- cannot bind data object directly by this way -->
-      <!-- <input
-        id="nickname"
-        type="text"
-        @input="nickname = $event.target.value"
-        :nickname="nickname"
-      /> -->
+  <div class="conents">
+    <div class="form-wrapper form-wrapper-sm">
+      <!-- .prevent = preventDefault -->
+      <form @submit.prevent="submitForm" class="form">
+        <div>
+          <label for="username">id: </label>
+          <input id="username" type="text" v-model="username" />
+        </div>
+        <div>
+          <label for="password">pw: </label>
+          <input id="password" type="text" v-model="password" />
+          <p class="validation-text">
+            <span class="warning" v-if="!isPasswordValid && isPwKeyup">
+              비밀번호 조건: 6~16자, 특수문자 1글자 이상
+            </span>
+          </p>
+        </div>
+        <div>
+          <label for="nickname">nickname: </label>
+          <!-- vue.js cjk IME issue : https://en.wikipedia.org/wiki/Input_method, https://vuejs.org/v2/guide/forms.html#vmodel-ime-tip -->
+          <!-- cannot bind data object directly by this way -->
+          <!-- <input
+            id="nickname"
+            type="text"
+            @input="nickname = $event.target.value"
+            :nickname="nickname"
+          /> -->
 
-      <!-- use custom directive: https://github.com/kciter/vue-ime-model -->
-      <input id="nickname" type="text" v-ime-model="nickname" />
+          <!-- use custom directive: https://github.com/kciter/vue-ime-model -->
+          <input id="nickname" type="text" v-ime-model="nickname" />
+        </div>
+        <button
+          :disabled="!(isUsernameValid && isPasswordValid && nickname)"
+          type="submit"
+          class="btn"
+        >
+          signup
+        </button>
+        <p v-if="logMsg">{{ logMsg }}</p>
+      </form>
     </div>
-    <button
-      :disabled="!(isUsernameValid && isPasswordValid && nickname)"
-      type="submit"
-    >
-      signup
-    </button>
-    <p v-if="logMsg">{{ logMsg }}</p>
-  </form>
+  </div>
 </template>
 
 <script>
