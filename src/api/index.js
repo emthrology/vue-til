@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-//axios.create(axiosConfigObject)
+//axios.create(axiosConfigObject) => use .env
 const instance = axios.create({
-  baseURL: 'http://localhost:3000',
+  // baseURL: 'http://localhost:3000',
+  baseURL: process.env.VUE_APP_API_URL,
 });
 
 function registerUser(data) {
-  // const url = 'http://localhost:3000/signup';
-  // return axios.post(url, data);
   return instance.post('/signup', data);
 }
 
