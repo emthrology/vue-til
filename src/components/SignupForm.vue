@@ -8,6 +8,7 @@
     <div>
       <label for="password">pw: </label>
       <input id="password" type="text" v-model="password" />
+      <p v-if="isPwKeyup">비밀번호 조건: 6~16자, 특수문자 1글자 이상</p>
     </div>
     <div>
       <label for="nickname">nickname: </label>
@@ -23,12 +24,18 @@
       <!-- use custom directive: https://github.com/kciter/vue-ime-model -->
       <input id="nickname" type="text" v-ime-model="nickname" />
     </div>
-    <button type="submit">signup</button>
+    <button
+      :disabled="!(isUsernameValid && isPasswordValid && nickname)"
+      type="submit"
+    >
+      signup
+    </button>
     <p v-if="logMsg">{{ logMsg }}</p>
   </form>
 </template>
 
 <script>
+import { validateEmail, validatiePassword } from '@/utils/validation';
 import { registerUser } from '@/api/index';
 export default {
   data() {
@@ -38,6 +45,17 @@ export default {
       nickname: '',
       logMsg: '',
     };
+  },
+  computed: {
+    isUsernameValid() {
+      return validateEmail(this.username);
+    },
+    isPasswordValid() {
+      return validatiePassword(this.password);
+    },
+    isPwKeyup() {
+      return !!this.password;
+    },
   },
   methods: {
     async submitForm() {
