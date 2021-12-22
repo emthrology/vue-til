@@ -23,14 +23,18 @@ export default {
   },
   methods: {
     async submitForm() {
-      const userData = {
-        username: this.username,
-        password: this.password,
-      };
-      const { data } = await loginUser(userData);
-      console.log({ data });
-      alert(`${data.user.username}님 로그인`);
-      this.initForm();
+      try {
+        const userData = {
+          username: this.username,
+          password: this.password,
+        };
+        const { data } = await loginUser(userData);
+        console.log({ data });
+        alert(`${data.user.username}님 로그인`);
+        this.initForm();
+      } catch (error) {
+        alert(error.response.data);
+      }
     },
     initForm() {
       this.username = '';
