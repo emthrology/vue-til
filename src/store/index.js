@@ -12,6 +12,11 @@ export default new Vuex.Store({
       state.username = username;
     },
   },
+  getters: {
+    isLoggedin(state) {
+      return state.username !== '';
+    },
+  },
   actions: {},
   modules: {},
 });

@@ -4,15 +4,25 @@
       <router-link to="/" class="logo"> TIL </router-link>
     </div>
     <div class="navigations">
-      <span>{{ $store.state.username }}</span>
-      <router-link to="/login">로그인</router-link>
-      <router-link to="/signup">회원가입</router-link>
+      <template v-if="isLogin">
+        <span>{{ $store.state.username }}</span>
+      </template>
+      <template v-else>
+        <router-link to="/login">로그인</router-link>
+        <router-link to="/signup">회원가입</router-link>
+      </template>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLoggedin;
+    },
+  },
+};
 </script>
 
 <style scoped>
