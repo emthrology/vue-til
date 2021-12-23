@@ -23,6 +23,11 @@ const routes = [
     component: () => import('@/views/SignupPage.vue'),
   },
   {
+    path: '/main',
+    name: 'Main',
+    component: () => import('@/views/MainPage.vue'),
+  },
+  {
     path: '*', // 위의  path 를 제외한 나머지
     component: () => import('@/views/404.vue'),
   },

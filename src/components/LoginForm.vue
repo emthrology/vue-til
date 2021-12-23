@@ -51,8 +51,10 @@ export default {
         };
         const { data } = await loginUser(userData);
         console.log({ data });
-        alert(`${data.user.username}님 로그인`);
+        // alert(`${data.user.username}님 로그인`);
         this.initForm();
+        //vue-router: progmmatic navigation
+        this.$router.push('/main');
       } catch (error) {
         alert(error.response.data);
       }
