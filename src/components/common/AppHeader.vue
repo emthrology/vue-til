@@ -7,7 +7,7 @@
       <template v-if="isLogin">
         <span class="username">{{ $store.state.username }}</span>
         &nbsp;
-        <span class="logout" @click="logout">logout span</span>
+        <span class="logout" @click="logout">logout</span>
       </template>
       <template v-else>
         <router-link to="/login">로그인</router-link>
