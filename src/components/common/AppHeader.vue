@@ -1,20 +1,54 @@
 <template>
   <header>
     <div>
-      <router-link to="/" class="logo"> TIL </router-link>
+      <router-link to="/" class="logo">
+        TIL
+        <span v-if="isLogin" class="username">{{ $store.state.username }}</span>
+      </router-link>
     </div>
     <div class="navigations">
-      <router-link to="/login">로그인</router-link>
-      <router-link to="/signup">회원가입</router-link>
+      <template v-if="isLogin">
+        &nbsp;
+        <span class="logout" @click="logout">logout</span>
+      </template>
+      <template v-else>
+        <router-link to="/login">로그인</router-link>
+        <router-link to="/signup">회원가입</router-link>
+      </template>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLoggedin;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.commit('clearUsername');
+      this.$router.push('/');
+    },
+  },
+};
 </script>
 
 <style scoped>
+.username {
+  color: white;
+}
+.logout {
+  color: red;
+  font-size: 14px;
+}
+.logout:hover {
+  cursor: default;
+  text-decoration: underline;
+  color: white;
+  font-weight: bold;
+}
 header {
   display: flex;
   justify-content: space-between;
