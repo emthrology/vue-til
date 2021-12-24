@@ -29,7 +29,8 @@
 
 <script>
 import { validateEmail } from '@/utils/validation';
-import { loginUser } from '@/api/index';
+// import { loginUser } from '@/api/index';
+// import { saveAuthToCookie, saveUserToCookie } from '@/utils/cookies';
 export default {
   data() {
     return {
@@ -49,14 +50,17 @@ export default {
           username: this.username,
           password: this.password,
         };
-        const { data } = await loginUser(userData);
-        this.$store.commit('setToken', data.token);
-        this.$store.commit('setUsername', data.user.username);
-        this.initForm();
+        // const { data } = await loginUser(userData);
+        // this.$store.commit('setToken', data.token);
+        // this.$store.commit('setUsername', data.user.username);
+        // saveAuthToCookie(data.token);
+        // saveUserToCookie(data.user.username);
+        // this.initForm();
+        await this.$store.dispatch('LOGIN', userData);
         //vue-router: progmmatic navigation
         this.$router.push('/main');
       } catch (error) {
-        alert(error.response.data);
+        alert(error);
       }
     },
     initForm() {
