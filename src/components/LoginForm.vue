@@ -50,8 +50,7 @@ export default {
           password: this.password,
         };
         const { data } = await loginUser(userData);
-        console.log({ data });
-        // alert(`${data.user.username}님 로그인`);
+        this.$store.commit('setToken', data.token);
         this.$store.commit('setUsername', data.user.username);
         this.initForm();
         //vue-router: progmmatic navigation
