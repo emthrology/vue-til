@@ -39,10 +39,13 @@ export default {
 }
 .logout {
   color: red;
+  font-size: 14px;
 }
 .logout:hover {
   cursor: default;
   text-decoration: underline;
+  color: white;
+  font-weight: bold;
 }
 header {
   display: flex;
