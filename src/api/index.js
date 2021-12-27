@@ -23,4 +23,8 @@ function fetchPostList() {
   return instance.get('/posts');
 }
 
-export { registerUser, loginUser, fetchPostList };
+function createPost(data) {
+  return instance.post('/posts', data);
+}
+
+export { registerUser, loginUser, fetchPostList, createPost };
