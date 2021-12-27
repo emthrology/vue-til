@@ -10,6 +10,9 @@
         <div>
           <label for="contents">Contents: </label>
           <textarea id="contents" rows="5" v-ime-model="contents" />
+          <p class="validation-text warning" v-if="isContentsValid">
+            Contents must be less then 200 length.
+          </p>
         </div>
         <button class="btn" type="submit">Create</button>
       </form>
@@ -26,6 +29,11 @@ export default {
       contents: '',
     };
   },
+  computed: {
+    isContentsValid() {
+      return this.contents.length > 200;
+    },
+  },
   methods: {
     async submitForm() {
       try {
@@ -35,7 +43,7 @@ export default {
         });
         console.log(response);
       } catch (error) {
-        alert(error);
+        alert(error.response.data.message);
       }
     },
   },
