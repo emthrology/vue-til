@@ -7,6 +7,9 @@
         <PostItem v-for="post of postItems" :key="post._id" :item="post" />
       </ul>
     </div>
+    <router-link to="/add" class="create-button">
+      <i class="ion-md-create"></i>
+    </router-link>
   </div>
 </template>
 
