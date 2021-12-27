@@ -1,9 +1,16 @@
 <template>
-  <div>PostPage</div>
+  <div class="form-container">
+    <PostAddForm />
+  </div>
 </template>
 
 <script>
-export default {};
+import PostAddForm from '@/components/posts/PostAddForm.vue';
+export default {
+  components: {
+    PostAddForm,
+  },
+};
 </script>
 
 <style></style>
