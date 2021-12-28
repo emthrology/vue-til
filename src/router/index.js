@@ -33,6 +33,11 @@ const routes = [
     component: () => import('@/views/PostPage.vue'),
   },
   {
+    path: '/post/:id',
+    name: 'Update',
+    component: () => import('@/views/PostEditPage.vue'),
+  },
+  {
     path: '*', // 위의  path 를 제외한 나머지
     component: () => import('@/views/404.vue'),
   },
