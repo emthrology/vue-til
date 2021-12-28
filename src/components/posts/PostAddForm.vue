@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { createPost } from '@/api';
+import { createPost } from '@/api/posts';
 export default {
   data() {
     return {
@@ -42,6 +42,7 @@ export default {
           contents: this.contents,
         });
         console.log(response);
+        this.$router.push('/main');
       } catch (error) {
         alert(error.response.data.message);
       }

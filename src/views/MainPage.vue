@@ -16,7 +16,7 @@
 <script>
 import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
 import PostItem from '@/components/posts/PostItem.vue';
-import { fetchPostList } from '@/api';
+import { fetchPostList } from '@/api/posts';
 export default {
   components: {
     PostItem,
