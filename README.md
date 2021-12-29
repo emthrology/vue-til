@@ -90,7 +90,8 @@ node -v
 ## 서버 실행 절차
 
 1. 로컬에 Node.js를 설치합니다.
-2. 리포지토리를 클론한 다음 아래 명령어를 실행합니다.
+2. app.js mongoose.connect('mongodb+srv://test:1234@cluster0-ypgh5.mongodb.net/test?retryWrites=true&w=majority',...
+3. 리포지토리를 클론한 다음 아래 명령어를 실행합니다.
 
 ```bash
 # Node.js를 실행하기 위해 필요한 라이브러리를 설치하는 명령어
