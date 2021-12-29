@@ -1,7 +1,7 @@
 <template>
   <header>
     <div>
-      <router-link to="/" class="logo">
+      <router-link :to="logoLink" class="logo">
         TIL
         <span v-if="isLogin" class="username">{{ $store.state.username }}</span>
       </router-link>
@@ -24,6 +24,9 @@ export default {
   computed: {
     isLogin() {
       return this.$store.getters.isLoggedin;
+    },
+    logoLink() {
+      return this.isLogin ? '/main' : '/';
     },
   },
   methods: {
