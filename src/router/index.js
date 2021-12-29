@@ -17,6 +17,15 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/LoginPage.vue'),
+
+    //개별 라우트에서 네비게이션 가드 설정
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isLoggedin) {
+        next('/main');
+        return;
+      }
+      next();
+    },
   },
   {
     path: '/signup',
@@ -64,6 +73,7 @@ const router = new VueRouter({
 });
 
 //router navitagion guard config
+//전역 네비게이션 가드 설정
 router.beforeEach((to, from, next) => {
   if (to.meta.auth && !store.getters.isLoggedin) {
     alert('로그인이 필요합니다');

@@ -28,12 +28,17 @@
           /> -->
 
           <!-- use custom directive: https://github.com/kciter/vue-ime-model -->
-          <input id="nickname" type="text" v-ime-model="nickname" />
+          <input id="nickname" type="text" v-imeModel="nickname" />
         </div>
         <button
           :disabled="!(isUsernameValid && isPasswordValid && nickname)"
           type="submit"
           class="btn"
+          :class="
+            !(isUsernameValid && isPasswordValid && nickname)
+              ? 'disabled'
+              : null
+          "
         >
           signup
         </button>
