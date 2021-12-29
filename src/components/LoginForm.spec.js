@@ -19,11 +19,11 @@ describe('LoginForm.vue', () => {
     expect(warningText.exists()).toBeTruthy();
   });
 
-  test('login btn should be able only when username and password both be typed', () => {
+  test('login btn should be able only when username and password both be well-typed', () => {
     const wrapper = shallowMount(LoginForm, {
       data() {
         return {
-          username: 'a@a.com',
+          username: 'a',
           password: '1234',
         };
       },

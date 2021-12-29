@@ -5,11 +5,11 @@
       <form class="form" @submit.prevent="submitForm">
         <div>
           <label for="title">Title: </label>
-          <input id="title" type="text" v-ime-model="title" />
+          <input id="title" type="text" v-imeModel="title" />
         </div>
         <div>
           <label for="contents">Contents: </label>
-          <textarea id="contents" rows="5" v-ime-model="contents" />
+          <textarea id="contents" rows="5" v-imeModel="contents" />
           <p class="validation-text warning" v-if="isContentsValid">
             Contents must be less then 200 length.
           </p>
