@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import imeFrag from '@/vue-ime-model-fragment';
+import imeFrag from './vue-ime-model-fragment';
 
 const imeModel = {
   inserted(el, binding, vnode) {
