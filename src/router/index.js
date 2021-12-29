@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '../store';
 // import LoginPage from '@/views/LoginPage.vue';
 // import SignupPage from '@/views/SignupPage.vue';
 
@@ -25,16 +26,19 @@ const routes = [
   {
     path: '/main',
     name: 'Main',
+    meta: { auth: true },
     component: () => import('@/views/MainPage.vue'),
   },
   {
     path: '/add',
     name: 'Add',
+    meta: { auth: true },
     component: () => import('@/views/PostPage.vue'),
   },
   {
     path: '/post/:id',
     name: 'Update',
+    meta: { auth: true },
     component: () => import('@/views/PostEditPage.vue'),
   },
   {
@@ -57,6 +61,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+//router navitagion guard config
+router.beforeEach((to, from, next) => {
+  if (to.meta.auth && !store.getters.isLoggedin) {
+    alert('로그인이 필요합니다');
+    next('/login');
+    return; // 밑의 불필요한 next 실행 방지
+  }
+  next();
 });
 
 export default router;
