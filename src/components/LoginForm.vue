@@ -13,12 +13,13 @@
         </div>
         <div>
           <label for="password">pw: </label>
-          <input id="password" type="text" v-model="password" />
+          <input id="password" type="password" v-model="password" />
         </div>
         <button
           :disabled="!(isUsernameValid && password)"
           type="submit"
           class="btn"
+          :class="!(isUsernameValid && password) ? 'disabled' : null"
         >
           login
         </button>
