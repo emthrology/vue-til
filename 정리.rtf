@@ -1,0 +1,57 @@
+1.eslint + prettier in vsCode
+    .eslintrc.js 를 root에 작성하고 rules 에 "prettier/prettier" 추가
+
+2.jsconfig.json (vscode shortcut)
+    "compilerOptions","exclude"
+
+3.vue-router 
+    3-1)code-splitting (lazy-loading)
+        component: () => import([vue 파일 디렉토리])
+    3-2)redirect, fallbacks
+        redirect: '[redirect directory]'
+        
+        (fallbacks): {
+            path: '*'
+            components : [예를 들면 404페이지 작성]
+        }
+    3-3)progmatic navigation
+        this.$router.push({configObject} | [path string])
+    3-4)dynamic routes: 
+        <router-link :to="[vue computed or method]">
+        likewise, dynamic :class="[vue computed or method]" 가능
+    3-5)navigation guard : see commit '13 네비게이션 가드 설정 비교 추가'
+
+4.api : axios
+    axios instance : axios.create(configObject)
+    axios interceptors : 
+        see @/api/interceptors.js & api index.js
+    see also axios docs  (https://axios-http.com/docs/intro)
+
+    moduling api functions (auth, posts, etc.)
+
+5. .env
+    .env 파일 종류 및 우선순위
+    1. .env.development : 개발용, .env 보다 우선순위 높음
+    2. .env.productioin : 배포용, .env 보다 우선순위 높음
+    3. .env : fallback 처럼 작동함
+
+6. cookies and webStorages
+    document.cookie
+    localStorage
+    sessionStorage
+
+7. vuex
+    actions
+        hide data manipulation logic from component codes
+
+    moduling stores
+        TODO vuex 각 요소를 나눌 것인가(state, mutation, action..)
+        TODO 각 기능별로 요소를 나눌 것인가 
+
+8. vue global filters
+    e.g. date formatting
+    -> apply in main.js
+
+9. jest, vue-test-utils
+    jest.config.js
+    jest docs, vue-test-utis docs
